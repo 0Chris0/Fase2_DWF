@@ -16,5 +16,8 @@ public class Usuario {
     private String email;
     private String username;
     private String password;
-    private String rol;
+
+    @ManyToOne
+    @JoinColumn(name = "id_rol", nullable = false)
+    private Rol rol;
 }

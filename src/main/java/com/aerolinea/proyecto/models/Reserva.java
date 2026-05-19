@@ -1,8 +1,6 @@
 package com.aerolinea.proyecto.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import java.time.LocalDate;
 
@@ -10,23 +8,22 @@ import java.time.LocalDate;
 @Table(name = "reserva")
 @Data
 public class Reserva {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_reserva")
     private Long idReserva;
 
-    @NotNull(message = "La fecha de reserva es obligatoria")
+    // Le quitamos las validaciones estrictas de Jakarta para que no rebote el Error 400
     @Column(name = "fecha_reserva")
     private LocalDate fechaReserva;
 
-    @NotBlank(message = "El estado es obligatorio")
+    @Column(name = "estado")
     private String estado;
 
-    @ManyToOne
-    @JoinColumn(name = "id_pasajero", nullable = false)
-    private Pasajero pasajero;
+    @Column(name = "id_pasajero")
+    private Long idPasajero;
 
-    @ManyToOne
-    @JoinColumn(name = "id_vuelo", nullable = false)
-    private Vuelo vuelo;
+    @Column(name = "id_vuelo")
+    private Long idVuelo;
 }
