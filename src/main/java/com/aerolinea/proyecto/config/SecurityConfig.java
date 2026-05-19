@@ -1,4 +1,4 @@
 package com.aerolinea.proyecto.config;
 
-public class CorsConfig {
+public class SecurityConfig {
 }
